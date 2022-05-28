@@ -44,9 +44,10 @@ pprint(sel)
 # 5 исполнители, чье имя состоит из 1 слова
 sel = connection.execute(
     '''
-    SELECT name FROM musician;
+    SELECT name FROM musician
+    WHERE name NOT iLIKE '%% %%';
     ''').fetchall()
-print(list(filter(lambda name: ' ' not in name[0], sel)))
+pprint(sel)
 
 # __________________________________________________________
 # 6 название треков, которые содержат слово "мой"/"my"
